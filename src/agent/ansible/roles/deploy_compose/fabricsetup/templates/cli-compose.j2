@@ -14,5 +14,9 @@ services:
     volumes:
       - /var/run/:/host/var/run/
       - {{ fabricworkdir }}/run/keyfiles:/etc/hyperledger/allorgs
+      - {{ fabricworkdir }}/run/keyfiles/genesis.block:/etc/hyperledger/allorgs/firstchannel.block
       - {{ fabricworkdir }}/run/keyfiles/chaincode:/opt/gopath/src/chaincode
-    entrypoint: /etc/hyperledger/allorgs/dochannel.sh
+    entrypoint: "bash -c \"\
+      /etc/hyperledger/allorgs/dochannel.sh && \
+      tail -f /dev/null \
+      \""

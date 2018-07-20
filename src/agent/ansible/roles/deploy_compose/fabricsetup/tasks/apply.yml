@@ -255,8 +255,8 @@
 
 - name: Move chaincode to the server
   copy:
-    src: "{{ playbook_dir }}/fabricsetup/templates/firstcode.go"
-    dest: "{{ fabricworkdir }}/run/keyfiles/chaincode/firstcode.go"
+    src: "{{ playbook_dir }}/fabricsetup/templates/smallbank.go"
+    dest: "{{ fabricworkdir }}/run/keyfiles/chaincode/smallbank.go"
     mode: "u=rw,g=rw"
   when: clihost == inventory_hostname
 

@@ -26,6 +26,8 @@ services:
       - ORDERER_KAFKA_RETRY_SHORTINTERVAL=1s
       - ORDERER_KAFKA_RETRY_SHORTTOTAL=30s
       - ORDERER_KAFKA_VERBOSE=true
+    ports:
+      - 7050:7050
     volumes:
       - {{ fabricworkdir }}/run/keyfiles:/var/hyperledger/orderer/orderer.genesis.block
       - {{ fabricworkdir }}/run/keyfiles/{{ orderer.org }}/orderers/{{ orderer.name }}.{{ orderer.org }}:/var/hyperledger/orderer

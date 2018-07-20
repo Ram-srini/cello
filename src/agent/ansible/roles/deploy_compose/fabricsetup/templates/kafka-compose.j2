@@ -20,4 +20,6 @@ services:
       - KAFKA_DEFAULT_REPLICATION_FACTOR={{ kafka_ids | length }}
       - KAFKA_ZOOKEEPER_CONNECT={{ zkparam | trim | replace(' ', ',') }}
 
+    ports:
+      - 9092:9092
 {% endfor %}

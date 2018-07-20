@@ -16,4 +16,8 @@ services:
       - ZOO_TICK_TIME=2000
       - ZOO_INIT_LIMIT=10
       - ZOO_SYNC_LIMIT=2
+    ports:
+      - 2181:2181
+      - 2888:2888
+      - 3888:3888
 {% endfor %}

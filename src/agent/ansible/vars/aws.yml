@@ -3,7 +3,7 @@
 auth: {
   auth_url: "",
   # This should be your AWS Access Key ID
-  username: "AKIAJY32VWHYOFOR4J7Q",
+  username: "",
   # This should be your AWS Secret Access Key
   # can be passed as part of cmd line when running the playbook
   password: "{{ password | default(lookup('env', 'AWS_SECRET_KEY')) }}"
@@ -11,7 +11,7 @@ auth: {
 
 # These variable defines AWS cloud provision attributes
 cluster: {
-  region_name: "us-east-1",     #TODO  Dynamic fetch
+  region_name: "ap-southeast-1",     #TODO  Dynamic fetch
   availability_zone: "", #TODO  Dynamic fetch based on region
   security_group: "Fabric",
   subnet_id: "", #Optional, if unset will use the first subnet it finds
@@ -23,9 +23,9 @@ cluster: {
   validate_certs: True,
   private_net_name: "demonet",
 
-  public_key_file: "/home/ubuntu/.ssh/fd.pub",
-  private_key_file: "/home/ubuntu/.ssh/fd",
-  ssh_key_name: "fabric",
+  public_key_file: "/home/ubuntu/.ssh/id_rsa.pub",
+  private_key_file: "/home/ubuntu/.ssh/id_rsa",
+  ssh_key_name: "fabric_key",
   # This variable indicate what IP should be used, only valid values are
   # private_ip or public_ip
   node_ip: "public_ip",
@@ -56,9 +56,9 @@ cluster: {
 
   # stack_size determines how many virtual or physical machines we will have
   # each machine will be named ${name_prefix}001 to ${name_prefix}${stack_size}
-  stack_size: 3,
+  stack_size: 10,
 
-  etcdnodes: ["fabric001", "fabric002", "fabric003"],
+  etcdnodes: ["fabric001", "fabric002", "fabric003","fabric004","fabric005","fabric006","fabric007","fabric008","fabric009","fabric0010"],
   builders: ["fabric001"],
 
   flannel_repo: "https://github.com/coreos/flannel/releases/download/v0.10.0/flannel-v0.10.0-linux-amd64.tar.gz",
@@ -68,5 +68,5 @@ cluster: {
 
   # If volume want to be used, specify a size in GB, make volume size 0 if wish
   # not to use volume from your cloud
-  volume_size: 8
+  volume_size: 20
 }
